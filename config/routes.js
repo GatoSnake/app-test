@@ -10,9 +10,9 @@ module.exports = (app) => {
 
   // Function verify if user is authenticated
   function checkAuth(req, res, next) {
-    if (process.env.NODE_ENV === 'development' && req.path.startsWith('/test', 0)) {
+    if (process.env.NODE_ENV === 'development' && req.path.startsWith('/login/callback', 0)) {
       next();
-    } else if (req.path === '/' || req.path === '/login') {
+    } else if (req.path === '/' || req.path === '/login' || req.path === '/login/callback' ) {
       if (req.session.auth) {
         res.redirect('/home');
       } else
